@@ -8,7 +8,7 @@
  * @author    {%= author_name %} <{%= author_email %}>
  * @license   GPL-2.0+
  * @link      {%= homepage %}
- * @copyright 2014 {%= author_name %}
+ * @copyright {%= author_name %}
  *
  * @wordpress-plugin
  * Plugin Name:       {%= title %}
@@ -29,40 +29,48 @@ if ( ! defined( 'WPINC' ) ) {
 	die;
 }
 
-/*----------------------------------------------------------------------------*
- * Public-Facing Functionality
- *----------------------------------------------------------------------------*/
 
-require_once( plugin_dir_path( __FILE__ ) . 'public/class-{%= slug %}.php' );
 
-/*
- * Register hooks that are fired when the plugin is activated or deactivated.
- * When the plugin is deleted, the uninstall.php file is loaded.
+/**
+ * The code that runs during plugin activation.
+ * This action is documented in includes/class-{%= slug %}-activator.php
  */
-register_activation_hook( __FILE__, array( '{%= safe_name %}', 'activate' ) );
-register_deactivation_hook( __FILE__, array( '{%= safe_name %}', 'deactivate' ) );
+function activate_plugin_name() {
+	require_once plugin_dir_path( __FILE__ ) . 'includes/class-{%= slug %}-activator.php';
+	Plugin_Name_Activator::activate();
+}
 
-add_action( 'plugins_loaded', array( '{%= safe_name %}', 'get_instance' ) );
-
-/*----------------------------------------------------------------------------*
- * Dashboard and Administrative Functionality
- *----------------------------------------------------------------------------*/
-
-/*
- * @TODO:
- *
- * If you want to include Ajax within the dashboard, change the following
- * conditional to:
- *
- * if ( is_admin() ) {
- *   ...
- * }
- *
- * The code below is intended to to give the lightest footprint possible.
+/**
+ * The code that runs during plugin deactivation.
+ * This action is documented in includes/class-{%= slug %}-deactivator.php
  */
-if ( is_admin() && ( ! defined( 'DOING_AJAX' ) || ! DOING_AJAX ) ) {
+function deactivate_plugin_name() {
+	require_once plugin_dir_path( __FILE__ ) . 'includes/class-{%= slug %}-deactivator.php';
+	Plugin_Name_Deactivator::deactivate();
+}
 
-	require_once( plugin_dir_path( __FILE__ ) . 'admin/class-{%= slug %}-admin.php' );
-	add_action( 'plugins_loaded', array( '{%= safe_name %}_Admin', 'get_instance' ) );
+register_activation_hook( __FILE__, 'activate_{%= slug %}' );
+register_deactivation_hook( __FILE__, 'deactivate_{%= slug %}' );
+
+/**
+ * The core plugin class that is used to define internationalization,
+ * admin-specific hooks, and public-facing site hooks.
+ */
+require plugin_dir_path( __FILE__ ) . 'includes/class-{%= slug %}.php';
+
+/**
+ * Begins execution of the plugin.
+ *
+ * Since everything within the plugin is registered via hooks,
+ * then kicking off the plugin from this point in the file does
+ * not affect the page life cycle.
+ *
+ * @since    1.0.0
+ */
+function run_{%= slug %}() {
+
+	$plugin = new {%= safe_name %}();
+	$plugin->run();
 
 }
+run_{%= slug %}();	

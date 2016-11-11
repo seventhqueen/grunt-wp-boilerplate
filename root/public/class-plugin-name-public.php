@@ -1,36 +1,26 @@
 <?php
+
 /**
- * The admin-specific functionality of the plugin.
- * {%= safe_name %}
+ * The public-facing functionality of the plugin.
  *
- * @package   {%= safe_name %}_Admin
- * @author    {%= author_name %} <{%= author_email %}>
- * @license   GPL-2.0+
- * @link      {%= homepage %}
- * @copyright {%= author_name %}
+ * @link       {%= homepage %}
+ * @since      1.0.0
+ *
+ * @package    {%= safe_name %}
+ * @subpackage {%= safe_name %}/public
  */
 
 /**
- * {%= safe_name %}_Admin class. This class should ideally be used to work with the
- * administrative side of the WordPress site.
- *
- * If you're interested in introducing public-facing
- * functionality, then refer to `class-plugin-name.php`
- *
- * @package {%= safe_name %}_Admin
- * @author  {%= author_name %} <{%= author_email %}>
- */
-/**
- * The admin-specific functionality of the plugin.
+ * The public-facing functionality of the plugin.
  *
  * Defines the plugin name, version, and two examples hooks for how to
  * enqueue the admin-specific stylesheet and JavaScript.
  *
- * @package    Plugin_Name
- * @subpackage Plugin_Name/admin
- * @author     Your Name <email@example.com>
+ * @package    {%= safe_name %}
+ * @subpackage {%= safe_name %}/public
+ * @author     {%= author_name %} <{%= author_email %}>
  */
-class {%= safe_name %}_Admin {
+class {%= safe_name %}_Public {
 
 	/**
 	 * The ID of this plugin.
@@ -54,13 +44,14 @@ class {%= safe_name %}_Admin {
 	 * Initialize the class and set its properties.
 	 *
 	 * @since    1.0.0
-	 * @param      string    $plugin_name       The name of this plugin.
+	 * @param      string    $plugin_name       The name of the plugin.
 	 * @param      string    $version    The version of this plugin.
 	 */
 	public function __construct( $plugin_name, $version ) {
 
 		$this->plugin_name = $plugin_name;
 		$this->version = $version;
+
 	}
 
 	/**
@@ -69,8 +60,8 @@ class {%= safe_name %}_Admin {
 	 * @since 1.0.0	 *
 	 */
 	public function register_hooks(){
-		add_action( 'admin_enqueue_scripts', array($this, 'enqueue_styles') );
-		add_action( 'admin_enqueue_scripts', array($this, 'enqueue_scripts') );
+		add_action( 'wp_enqueue_scripts', array($this, 'enqueue_styles') );
+		add_action( 'wp_enqueue_scripts', array($this, 'enqueue_scripts') );
 	}
 
 	/**
@@ -78,7 +69,7 @@ class {%= safe_name %}_Admin {
 	 * @param $plugin_name
 	 * @param $version
 	 *
-	 * @return Plugin_Name_Admin
+	 * @return {%= safe_name %}_Public
 	 */
 	public static function create($plugin_name, $version){
 		$instance = new self($plugin_name, $version);
@@ -87,7 +78,7 @@ class {%= safe_name %}_Admin {
 	}
 
 	/**
-	 * Register the stylesheets for the admin area.
+	 * Register the stylesheets for the public-facing side of the site.
 	 *
 	 * @since    1.0.0
 	 */
@@ -105,12 +96,12 @@ class {%= safe_name %}_Admin {
 		 * class.
 		 */
 
-		wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'css/main-admin.css', array(), $this->version, 'all' );
+		wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'css/main.css', array(), $this->version, 'all' );
 
 	}
 
 	/**
-	 * Register the JavaScript for the admin area.
+	 * Register the JavaScript for the public-facing side of the site.
 	 *
 	 * @since    1.0.0
 	 */
@@ -128,9 +119,8 @@ class {%= safe_name %}_Admin {
 		 * class.
 		 */
 
-		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/main-admin.js', array( 'jquery' ), $this->version, false );
+		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/main.js', array( 'jquery' ), $this->version, false );
 
 	}
-
 
 }
