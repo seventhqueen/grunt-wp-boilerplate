@@ -71,6 +71,7 @@ class {%= safe_name %}_Admin {
 	public function register_hooks(){
 		add_action( 'admin_enqueue_scripts', array($this, 'enqueue_styles') );
 		add_action( 'admin_enqueue_scripts', array($this, 'enqueue_scripts') );
+		add_action( 'after_setup_theme', array($this, 'load_options') );
 	}
 
 	/**
@@ -130,6 +131,12 @@ class {%= safe_name %}_Admin {
 
 		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/main-admin.js', array( 'jquery' ), $this->version, false );
 
+	}
+
+	public function load_options() {
+		if ( file_exists( {%= short_name %}_DIR . 'includes/function-options-init.php' ) ) {
+			require_once( {%= short_name %}_DIR . 'includes/function-options-init.php' );
+		}
 	}
 
 

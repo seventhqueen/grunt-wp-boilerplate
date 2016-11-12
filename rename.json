@@ -1,10 +1,10 @@
 {
     "plugin-name.php"                   			: "{%= slug %}.php",
-    "includes/class-plugin-name-activator.php"  	: "includes/class-{%= slug %}-activator.php",
-    "includes/class-plugin-name-deactivator.php" 	: "includes/class-{%= slug %}-deactivator.php",    
-    "includes/class-plugin-name-i18n.php"      		: "includes/class-{%= slug %}-i18n.php",   
-    "includes/class-plugin-name.php"      		: "includes/class-{%= slug %}.php",     
-    "public/class-plugin-name-public.php"      	: "public/class-{%= slug %}.php",
-    "admin/class-plugin-name-admin.php" 		: "admin/class-{%= slug %}-admin.php",
+    "includes/class-plugin-name-activator.php"  	: "includes/class-{%= short_name_files %}-activator.php",
+    "includes/class-plugin-name-deactivator.php" 	: "includes/class-{%= short_name_files %}-deactivator.php",    
+    "includes/class-plugin-name-i18n.php"      		: "includes/class-{%= short_name_files %}-i18n.php",   
+    "includes/class-plugin-name.php"      		: "includes/class-{%= short_name_files %}.php",     
+    "public/class-plugin-name-public.php"      	: "public/class-{%= short_name_files %}-public.php",
+    "admin/class-plugin-name-admin.php" 		: "admin/class-{%= short_name_files %}-admin.php",
     "languages/plugin-name.pot"         		: "languages/{%= slug %}.pot"
 }

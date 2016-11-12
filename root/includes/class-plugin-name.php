@@ -101,9 +101,17 @@ class {%= safe_name %} {
 	 */
 	private function load_dependencies() {
 
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-{%= slug %}-i18n.php';
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-{%= slug %}-admin.php';
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'public/class-{%= slug %}-public.php';
+		if (is_admin() || is_customize_preview() ) {
+			if ( ! class_exists( 'ReduxFramework' ) && file_exists( {%= short_name %}_DIR . 'includes/options/framework.php' ) ) {
+				require_once {%= short_name %}_DIR . 'includes/options/framework.php';
+
+			}
+		}
+		
+
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-{%= short_name_files %}-i18n.php';
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-{%= short_name_files %}-admin.php';
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'public/class-{%= short_name_files %}-public.php';
 	}
 
 	/**

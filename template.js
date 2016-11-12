@@ -26,6 +26,7 @@ exports.template = function( grunt, init, done ) {
 		// Prompt for these values.
 		init.prompt( 'title', 'Plugin title' ),
         init.prompt( 'slug', 'Plugin slug / textdomain (no spaces)' ),
+        init.prompt( 'short_name' ),
 		init.prompt( 'description', 'An awesome plugin that does awesome things' ),
         {
             name: 'version',
@@ -39,7 +40,10 @@ exports.template = function( grunt, init, done ) {
         init.prompt( 'github_repo' )
 	], function( err, props ) {
 
-        props.safe_name = props.title.replace(/[\W_]+/g, '_');
+        props.safe_name = props.short_name.replace(/[\W_]+/g, '_');
+        props.short_name_lower = props.short_name.toLowerCase();
+		props.short_name_files = props.short_name_lower.replace(/_+/g, '-');
+		props.short_name_var = props.short_name_lower.replace(/-+/g, '_');
 
 		// Files to copy and process
 		var files = init.filesToCopy( props );
