@@ -34,8 +34,8 @@ exports.template = function( grunt, init, done ) {
             default: '0.0.1'
         },
 		init.prompt( 'homepage', 'http://wordpress.org/plugins' ),
-		init.prompt( 'author_name' ),
-		init.prompt( 'author_email' ),
+		init.prompt( 'author_name', 'SeventhQueen' ),
+		init.prompt( 'author_email', 'plugins@seventhqueen.com' ),
 		init.prompt( 'author_url' ),
         init.prompt( 'github_repo' )
 	], function( err, props ) {

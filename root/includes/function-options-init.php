@@ -10,7 +10,7 @@ if ( ! class_exists( 'Redux' ) ) {
 
 
 // This is your option name where all the Redux data is stored.
-$opt_name = "fabulous_opt";
+$opt_name = "{%= title %}_opt";
 
 /*
  *
@@ -112,7 +112,7 @@ $args = array(
 	// Force your panel to always open to a specific tab (by id)
 	'page_icon'            => 'icon-themes',
 	// Icon displayed in the admin panel next to your menu_title
-	'page_slug'            => 'fabulous',
+	'page_slug'            => '{%= slug %}',
 	// Page slug used to denote the panel, will be based off page title then menu title then opt_name if not provided
 	'save_defaults'        => true,
 	// On load save the defaults to DB before user clicks save or not

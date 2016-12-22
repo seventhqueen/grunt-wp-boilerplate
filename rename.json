@@ -6,5 +6,5 @@
     "includes/class-plugin-name.php"      		: "includes/class-{%= short_name_files %}.php",     
     "public/class-plugin-name-public.php"      	: "public/class-{%= short_name_files %}-public.php",
     "admin/class-plugin-name-admin.php" 		: "admin/class-{%= short_name_files %}-admin.php",
-    "languages/plugin-name.pot"         		: "languages/{%= slug %}.pot"
+    "plugin-name.pot"         		: "{%= slug %}.pot"
 }
