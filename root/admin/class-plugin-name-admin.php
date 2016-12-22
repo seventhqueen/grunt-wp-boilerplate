@@ -106,7 +106,7 @@ class {%= safe_name %}_Admin {
 		 * class.
 		 */
 
-		wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'css/main-admin.css', array(), $this->version, 'all' );
+		wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'assets/css/main-admin.css', array(), $this->version, 'all' );
 
 	}
 
@@ -129,7 +129,7 @@ class {%= safe_name %}_Admin {
 		 * class.
 		 */
 
-		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/main-admin.js', array( 'jquery' ), $this->version, false );
+		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'assets/js/main-admin.js', array( 'jquery' ), $this->version, false );
 
 	}
 
